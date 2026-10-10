@@ -30,7 +30,8 @@ python tarefas.py --help
 ```
 
 Não há nada para instalar: o programa não depende de bibliotecas externas.
-No Linux/macOS, se `python` não existir, use `python3` em todos os comandos.
+
+**Importante: No Linux/macOS, se `python` não existir, use `python3` no início de todos os comandos.**
 
 ## Como usar
 
