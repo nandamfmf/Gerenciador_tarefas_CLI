@@ -50,35 +50,35 @@ Se o comando for digitado sem argumentos (`python tarefas.py`), a ajuda é exibi
 
 Use aspas quando a descrição tiver espaços.
 
-### Exemplos
+### Exemplos de uso
 
 ```text
-$ python tarefas.py adicionar "Estudar Git"
+python tarefas.py adicionar "Estudar Git"
 Tarefa #1 adicionada.
 
-$ python tarefas.py adicionar "Ler documentação do argparse"
+python tarefas.py adicionar "Ler documentação do argparse"
 Tarefa #2 adicionada.
 
-$ python tarefas.py listar
+python tarefas.py listar
 [ ] #1 Estudar Git 10/10/2026
 [ ] #2 Ler documentação do argparse 10/10/2026
 
-$ python tarefas.py concluir 1
+python tarefas.py concluir 1
 Tarefa #1 concluída.
 
-$ python tarefas.py filtrar pendente
+python tarefas.py filtrar pendente
 [ ] #2 Ler documentação do argparse 10/10/2026
 
-$ python tarefas.py filtrar concluida
+python tarefas.py filtrar concluida
 [x] #1 Estudar Git 10/10/2026
 
-$ python tarefas.py editar 2 "Ler a documentação do pytest"
+python tarefas.py editar 2 "Ler a documentação do pytest"
 Tarefa #2 atualizada: Ler a documentação do pytest
 
-$ python tarefas.py remover 1
+python tarefas.py remover 1
 Tarefa #1 removida.
 
-$ python tarefas.py listar
+python tarefas.py listar
 [ ] #2 Ler a documentação do pytest 10/10/2026
 ```
 
