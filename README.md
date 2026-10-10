@@ -111,8 +111,35 @@ tarefas.py: error: argument comando: invalid choice: 'voar' (choose from 'adicio
 
 ### Onde ficam os dados
 
-Em `tarefas.json`, na pasta do projeto — não importa de qual diretório o comando seja executado.
+Em `tarefas.json`, na pasta do projeto (ou na pasta do executável, se você usar a versão empacotada) — não importa de qual diretório o comando seja executado.
 O arquivo é criado automaticamente na primeira tarefa adicionada e não é versionado (está no `.gitignore`).
+
+### Gerar um executável (opcional)
+
+Dá para empacotar o programa em um único arquivo que roda **sem ter o Python instalado**, usando o [PyInstaller](https://pyinstaller.org/). O executável é gerado para o sistema operacional em que você roda o comando (para ter a versão de Windows, gere no Windows; para Linux, no Linux; para macOS, no macOS).
+
+```bash
+pip install pyinstaller
+pyinstaller --onefile --name tarefas tarefas.py
+```
+
+O resultado fica na pasta `dist/`: `dist/tarefas.exe` (Windows) ou `dist/tarefas` (Linux/macOS). Para usar:
+
+```bash
+# Windows (PowerShell ou CMD)
+dist\tarefas.exe adicionar "Estudar Git"
+dist\tarefas.exe listar
+
+# Linux / macOS
+./dist/tarefas adicionar "Estudar Git"
+./dist/tarefas listar
+```
+
+Os comandos são os mesmos da tabela acima; basta trocar `python tarefas.py` pelo caminho do executável.
+Com o executável, o `tarefas.json` é criado **na mesma pasta do executável** (mantenha-o em um local onde você tenha permissão de escrita).
+As pastas `build/` e `dist/` e o arquivo `tarefas.spec` são gerados pelo PyInstaller e já estão no `.gitignore`.
+
+Se o Windows ou o antivírus reclamar de um executável desconhecido, é um comportamento comum em arquivos gerados pelo PyInstaller que não são assinados.
 
 ### Rodando os testes
 
