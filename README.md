@@ -150,7 +150,7 @@ python -m pytest
 
 ## Como foi o desenvolvimento
 
->  Apesar de já ter feito um gerenciador de tarefas em outra linguagem de programação, foi minha primeira vez utilizando o Python com programação orientada a objetos e sua bibloioteca argparse. De maneira geral, acredito que foi uma excelente escolha, porque o Pyhton é uma linguagem versátil e a cada projeto consigo aprender novos módulos úteis.
+>  Apesar de já ter feito um gerenciador de tarefas em outra linguagem de programação, foi minha primeira vez utilizando o Python para um projeto com programação orientada a objetos e conhecendo a sua bibloioteca argparse. De maneira geral, acredito que foi uma excelente escolha, porque o Pyhton é uma linguagem versátil e a cada projeto consigo aprender novos módulos úteis.
 
 **Organização do código:**
 
