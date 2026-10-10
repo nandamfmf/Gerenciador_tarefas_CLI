@@ -1,17 +1,13 @@
 import unicodedata
 
 def normalizar_texto(texto):
-    # Remove acentos, converte para minúsculas e remove espaços nas pontas
+    """ Remove acentos, converte para minúsculas e remove espaços nas pontas """
     nfkd = unicodedata.normalize('NFKD', texto)
     texto_sem_acento = "".join([c for c in nfkd if not unicodedata.combining(c)])
     return texto_sem_acento.lower().strip()
 
 class Tarefa:
-    id = 0
-    descricao = ""
-    status = ""
-    data_criacao = 0
-
+    """ Representa uma tarefa com ID, descrição, status e data de criação """
     def __init__(self, id, descricao, status, data_criacao):
         self.id = id
         self.descricao = descricao
@@ -21,12 +17,16 @@ class Tarefa:
 
 class gerenciaTarefas:
 
+    """ Gerencia uma lista de tarefas, permitindo adicionar, listar, concluir, remover, filtrar e editar tarefas """
+    
     def __init__(self):
         self.lista_tarefas = []
 
     def adicionar_tarefa(self, descricao, data_criacao):
 
-        nova_tarefa = Tarefa(len(self.lista_tarefas) + 1, descricao, "pendente", data_criacao)
+        novo_id = 1 if not self.lista_tarefas else max(t.id for t in self.lista_tarefas) + 1
+
+        nova_tarefa = Tarefa(novo_id, descricao, "pendente", data_criacao)
 
         self.lista_tarefas.append(nova_tarefa)
 

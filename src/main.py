@@ -5,12 +5,12 @@ from src.armazenamento import salvar_arquivo, carregar_arquivo
 
 def main():
 
-    # O gerenciador é um objeto criado a partir da classe gerenciaTarefas, que contém a lista de tarefas e os métodos para manipulá-las.
+    """ O gerenciador é um objeto criado a partir da classe gerenciaTarefas, que contém a lista de tarefas e os métodos para manipulá-las. """
     gerenciador = gerenciaTarefas()
     lista_tarefas_carregadas = carregar_arquivo()
     gerenciador.lista_tarefas = lista_tarefas_carregadas
 
-    # O parser é uma instância do módulo argparse responsável por ler e interpretar os argumentos passados na linha de comando.
+    """ O parser é uma instância do módulo argparse responsável por ler e interpretar os argumentos passados na linha de comando. """
     parser = argparse.ArgumentParser(description="Gerenciador de Tarefas CLI")
     subparsers = parser.add_subparsers(dest="comando", help="Comandos disponíveis")
 
@@ -33,7 +33,9 @@ def main():
     parser_editar.add_argument("nova_descricao", type=str, help="Nova descrição da tarefa")
 
 
-    # Faz a leitura dos argumentos passados na linha de comando e os armazena em um objeto chamado args.
+
+    """ Faz a leitura dos argumentos passados na linha de comando e os armazena em um objeto chamado args. """
+    
     args = parser.parse_args()
 
     if args.comando == "adicionar":
@@ -41,7 +43,7 @@ def main():
             data_atual = datetime.now().strftime("%d/%m/%Y")
             gerenciador.adicionar_tarefa(args.descricao, data_atual)
             salvar_arquivo(gerenciador.lista_tarefas)
-            id_criado = len(gerenciador.lista_tarefas)
+            id_criado = gerenciador.lista_tarefas[-1].id
             print(f"Tarefa #{id_criado} adicionada.")
 
     elif args.comando == "listar":
