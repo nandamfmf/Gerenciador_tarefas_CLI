@@ -18,7 +18,7 @@ class Tarefa:
 class gerenciaTarefas:
 
     """ Gerencia uma lista de tarefas, permitindo adicionar, listar, concluir, remover, filtrar e editar tarefas """
-    
+
     def __init__(self):
         self.lista_tarefas = []
 

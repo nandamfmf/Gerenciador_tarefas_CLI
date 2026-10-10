@@ -35,16 +35,22 @@ def main():
 
 
     """ Faz a leitura dos argumentos passados na linha de comando e os armazena em um objeto chamado args. """
-    
+
     args = parser.parse_args()
 
     if args.comando == "adicionar":
             
             data_atual = datetime.now().strftime("%d/%m/%Y")
-            gerenciador.adicionar_tarefa(args.descricao, data_atual)
-            salvar_arquivo(gerenciador.lista_tarefas)
-            id_criado = gerenciador.lista_tarefas[-1].id
-            print(f"Tarefa #{id_criado} adicionada.")
+
+            if args.descricao.strip() == "":
+                print("Descrição da tarefa não pode ser vazia.")
+                return
+            
+            else:          
+                gerenciador.adicionar_tarefa(args.descricao, data_atual)
+                salvar_arquivo(gerenciador.lista_tarefas)
+                id_criado = gerenciador.lista_tarefas[-1].id
+                print(f"Tarefa #{id_criado} adicionada.")
 
     elif args.comando == "listar":
             
@@ -66,8 +72,12 @@ def main():
 
     elif args.comando == "editar":
 
-            gerenciador.editar_descricao_tarefa(args.id, args.nova_descricao)
-            salvar_arquivo(gerenciador.lista_tarefas)
+            if args.nova_descricao.strip() == "":
+                print("Nova descrição da tarefa não pode ser vazia.")
+                return
+            else:
+                gerenciador.editar_descricao_tarefa(args.id, args.nova_descricao)
+                salvar_arquivo(gerenciador.lista_tarefas)
         
     else:
         parser.print_help()
