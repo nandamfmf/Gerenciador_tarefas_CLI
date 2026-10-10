@@ -162,17 +162,16 @@ src/armazenamento.py   # armazenamento: salvar e carregar o JSON
 testes/                # testes automatizados (pytest)
 ```
 
-**Decisões tomadas.**
-- **JSON** para guardar as tarefas: legível, simples de depurar e suportado direto pela biblioteca padrão.
-- **`argparse` com subcomandos**: gera a ajuda e valida os argumentos automaticamente.
-- **Novo id = maior id existente + 1**, assim um id nunca é reaproveitado por engano depois de uma remoção no meio da lista.
-- **Filtro tolerante**: `concluida`, `concluída` e `CONCLUÍDA` funcionam (acentos e maiúsculas são normalizados).
-- **Caminho fixo do arquivo**: o `tarefas.json` fica na pasta do projeto, evitando que o programa leia/grave arquivos diferentes conforme a pasta em que foi executado.
+**Decisões tomadas:**
+- JSON para guardar as tarefas: legível, claro e simples de depurar.
+- argparse com subcomandos: possui o comando help por padrão e valida os argumentos automaticamente.
+- Caminho fixo do arquivo: o `tarefas.json` fica na pasta do projeto, evitando que o programa leia/grave arquivos diferentes conforme a pasta em que foi executado.
 
 **Dificuldades e como resolvi.**
-- Garantir que o programa **não perdesse dados** com arquivo vazio ou inexistente.
-- Fazer o filtro aceitar **acentos** (`concluída`) → função `normalizar_texto` com `unicodedata`.
+- Percebi que a função reponsável por editar a descrição de uma tarefa estava aceitando strings vazias como " ". Por isso, precisei implementar uma validação antes de passar a descrição como argumento para a função.
+- Fazer o prorgrama aceitar acentos (o status de tarefa `concluída` é aceito assim como `concluida`) por meio da função `normalizar_texto` (utilizei o módulo `unicodedata`)
+- Atualização de ID's: o novo id = maior id existente + 1, assim um id nunca recebe o valor errado após uma remoção no meio da lista (antes eu utilizava o tamanho da lista para alterar o ID)
 
 ## Próximos passos
 
-- Melhorar e aumentar a quantidade de testes, aumentar a quantidade de funcionalidades para deixar o programa mais robusto, fazer um painel visual com front-end.
+- Melhorar e aumentar a quantidade de testes para deixar a validação robusta, aumentar a quantidade de funcionalidades para deixar o programa mais completo, fazer um painel visual com front-end.
