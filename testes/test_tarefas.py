@@ -15,10 +15,8 @@ def test_id_incremental_apos_remocao():
     gerenciador.adicionar_tarefa("Tarefa A", "10/10/2026")
     gerenciador.adicionar_tarefa("Tarefa B", "10/10/2026")
     
-    # Remove a primeira tarefa (ID 1)
     gerenciador.remover_tarefa(1)
-    
-    # Adiciona uma nova tarefa; o ID deve ser 3 (nunca duplicar o 2)
+
     gerenciador.adicionar_tarefa("Tarefa C", "10/10/2026")
     
     assert len(gerenciador.lista_tarefas) == 2
